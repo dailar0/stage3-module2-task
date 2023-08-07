@@ -1,14 +1,20 @@
+
 plugins {
     id 'java-base'
+    id 'org.springframework.boot' version '2.7.14'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
+
 
 wrapper {
     gradleVersion = gradlewVersion
 }
 
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
+    apply plugin: 'io.spring.dependency-management'
     group = 'com.mjc.school'
 
     sourceCompatibility = javaVersion
@@ -19,9 +25,9 @@ subprojects {
     }
 
     dependencies {
-        implementation "org.springframework:spring-context:$springVersion"
+        implementation 'org.springframework.boot:spring-boot-starter'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-        testImplementation "org.springframework:spring-test:$springVersion"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit:$archUnitVersion"
@@ -29,10 +35,11 @@ subprojects {
         annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
         implementation "org.mapstruct:mapstruct:$mapstructVersion"
     }
-    test {
+    tasks.named('test') {
         useJUnitPlatform()
     }
 }
+
 
 task repack(type: Jar, dependsOn: ':module-main:build') {
     if (findProject(':module-main') != null) {
