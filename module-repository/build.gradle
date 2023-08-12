@@ -3,6 +3,11 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin
 plugins {
     id 'org.springframework.boot' version '2.7.14' apply false
 }
+
+dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+}
 dependencyManagement {
     imports {
         mavenBom SpringBootPlugin.BOM_COORDINATES

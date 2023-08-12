@@ -2,13 +2,18 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
     id 'application'
-    id 'org.springframework.boot'
+    id 'org.springframework.boot' version '2.7.14'
 }
 
-mainClassName = 'com.mjc.school.Main'
+mainClassName = 'com.mjc.school.Stage3Module2TaskApplication'
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation project(':module-web')
+    testImplementation project(':module-web')
+    testImplementation project(':module-service')
+    testImplementation project(':module-repository')
 }
 
 run {
