@@ -17,7 +17,6 @@ public class NewsValidatorImpl implements Validator<NewsInputDTO> {
         HashSet<String> violations = new HashSet<>();
 
         if ((newsInputDTO == null) ||
-                (newsInputDTO.getId() == null) ||
                 (newsInputDTO.getTitle() == null) ||
                 (newsInputDTO.getContent() == null)) {
             violations.add(generalMessage);

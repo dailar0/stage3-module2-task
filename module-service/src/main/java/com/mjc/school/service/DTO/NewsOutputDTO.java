@@ -12,7 +12,7 @@ public class NewsOutputDTO {
     private final String content;
     private final LocalDateTime createDate;
     private final LocalDateTime lastUpdateDate;
-    private final long authorId;
+    private final Long authorId;
     @Override
     public String toString() {
         return "NewsRichDTO{" +

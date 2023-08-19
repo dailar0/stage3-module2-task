@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Component
 public class AuthorValidatorImpl implements Validator<AuthorInputDTO> {
+    //98
     private static final String nameMessage = "Name should have length from 3 to 15.";
     private static final String generalMessage = "All fields are required.";
 
@@ -15,7 +16,7 @@ public class AuthorValidatorImpl implements Validator<AuthorInputDTO> {
     public Set<String> validate(AuthorInputDTO authorDTO) {
         HashSet<String> violations = new HashSet<>();
 
-        if ((authorDTO == null) || (authorDTO.getId() == null) || (authorDTO.getName() == null)) {
+        if ((authorDTO == null) || (authorDTO.getName() == null)) {
             violations.add(generalMessage);
             return violations;
         }

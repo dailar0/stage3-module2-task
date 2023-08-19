@@ -4,7 +4,7 @@ import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.model.Author;
 import com.mjc.school.service.DTO.AuthorInputDTO;
 import com.mjc.school.service.DTO.AuthorOutputDTO;
-import com.mjc.school.service.DTO.NewsOutputDTO;
+import com.mjc.school.service.annotation.OnDelete;
 import com.mjc.school.service.exception.EntityNotFoundException;
 import com.mjc.school.service.exception.ValidationException;
 import com.mjc.school.service.mapping.AuthorMapper;
@@ -21,7 +21,6 @@ public class AuthorService implements BaseService<AuthorInputDTO, AuthorOutputDT
     private final BaseRepository<Author, Long> repository;
     private final AuthorMapper mapper;
     private final Validator<AuthorInputDTO> validator;
-    private final NewsService newsService;
 
     @Override
     public List<AuthorOutputDTO> readAll() {
@@ -60,14 +59,9 @@ public class AuthorService implements BaseService<AuthorInputDTO, AuthorOutputDT
     }
 
     @Override
+    @OnDelete(OnDelete.CascadeAction.SET_NULL)
     public boolean deleteById(Long id) {
-        if (repository.deleteById(id)) {
-            newsService.readAllByAuthorId(id).stream()
-                    .map(NewsOutputDTO::getId)
-                    .forEach(newsService::deleteById);
-            return true;
-        }
-        return false;
+        return repository.deleteById(id);
     }
 
     private void validate(AuthorInputDTO authorInputDTO) {

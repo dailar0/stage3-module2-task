@@ -12,6 +12,7 @@ import com.mjc.school.service.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -80,10 +81,12 @@ public class NewsService implements BaseService<NewsInputDTO, NewsOutputDTO, Lon
         return newsDAO.deleteById(id);
     }
 
-    protected List<NewsOutputDTO> readAllByAuthorId(Long authorId) {
+    public List<NewsOutputDTO> readAllByAuthorId(Long authorId) {
+        if (authorId == null)
+            return Collections.emptyList();
         return newsDAO
                 .readAll().stream()
-                .filter(news -> news.getAuthorId().equals(authorId))
+                .filter(news -> authorId.equals(news.getAuthorId()))
                 .map(mapper::mapNewsToOutput)
                 .collect(Collectors.toList());
     }

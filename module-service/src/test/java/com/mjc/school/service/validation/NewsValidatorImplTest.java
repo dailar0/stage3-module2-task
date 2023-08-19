@@ -154,15 +154,6 @@ class NewsValidatorImplTest {
         Set<String> violations = validator.validate(newsInputDTO);
         assertTrue(violations.contains(generalMessage));
     }
-    @Test
-    public void testNullId() {
-        NewsInputDTO newsInputDTO = new NewsInputDTO(null,
-                getValidTitle(),
-                getValidContent(),
-                getValidAuthor());
-        Set<String> violations = validator.validate(newsInputDTO);
-        assertTrue(violations.contains(generalMessage));
-    }
 
     @Test
     public void TestNullObject() {

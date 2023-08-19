@@ -27,13 +27,6 @@ class AuthorValidatorImplTest {
     }
 
     @Test
-    void testNullId() {
-        AuthorInputDTO dto = new AuthorInputDTO(null, "John Doe");
-        Set<String> violations = validator.validate(dto);
-        assertTrue(violations.contains(generalMessage));
-    }
-
-    @Test
     void testNullName() {
         AuthorInputDTO dto = new AuthorInputDTO(getValidId(), null);
         Set<String> violations = validator.validate(dto);
