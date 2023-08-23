@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/author")
-public class ConsoleAuthorControllerImpl implements BaseController<AuthorInputDTO, AuthorOutputDTO, Long> {
+public class AuthorControllerWebImpl implements BaseController<AuthorInputDTO, AuthorOutputDTO, Long> {
     private final BaseService<AuthorInputDTO, AuthorOutputDTO, Long> authorService;
 
     @GetMapping

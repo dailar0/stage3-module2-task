@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @Service
 public class NewsService implements BaseService<NewsInputDTO, NewsOutputDTO, Long> {
     private final BaseRepository<News, Long> newsDAO;
-
     private final BaseRepository<Author, Long> authorRepository;
     private final Validator<NewsInputDTO> newsValidator;
     private final NewsMapper mapper;
@@ -39,7 +38,6 @@ public class NewsService implements BaseService<NewsInputDTO, NewsOutputDTO, Lon
         return mapper.mapNewsToOutput(savedNews);
     }
 
-    //TODO
     public NewsOutputDTO update(NewsInputDTO updateRequest) {
         validate(updateRequest);
         if (newsDAO.existById(updateRequest.getId())) {

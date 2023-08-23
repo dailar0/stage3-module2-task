@@ -59,7 +59,7 @@ public class AuthorService implements BaseService<AuthorInputDTO, AuthorOutputDT
     }
 
     @Override
-    @OnDelete(OnDelete.CascadeAction.SET_NULL)
+    @OnDelete(OnDelete.CascadeAction.REMOVE)
     public boolean deleteById(Long id) {
         return repository.deleteById(id);
     }

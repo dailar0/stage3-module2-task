@@ -1,4 +1,4 @@
-package com.mjc.school.service.aspect;
+package com.mjc.school.service.DTO.aspect;
 
 import com.mjc.school.service.DTO.NewsInputDTO;
 import com.mjc.school.service.DTO.NewsOutputDTO;
